@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AtletikaiVerseny
 {
@@ -11,16 +12,24 @@ namespace AtletikaiVerseny
         public string Rajtszam { get; private set; }
         public string VezNev { get; private set; }
         public string KerNev { get; private set; }
-        public string Egyesület { get; private set; }
+        public string Egyesulet { get; private set; }
         public int Ugras { get; private set; }
 
-        public Atleta(string a)
-        {           
-            Rajtszam = Convert.ToInt32(a[0]);
-            VezNev = Convert.ToInt32(a[1]);
-            KerNev = Convert.ToInt32(a[2])
-            Egyesület = Convert.ToInt32(a[3]);
-            Ugras = a[4];
+        public Atleta(string sor)
+        {
+            string[] a = sor.Split(';');
+            Rajtszam = a[0];
+            VezNev = a[1];
+            KerNev = a[1];
+            Egyesulet = a[2];
+            Ugras = Convert.ToInt32(a[3]);
+        }
+        public string Nev(string nev)
+        {
+            string[] b = nev.Split(' ');
+            VezNev = b[0];
+            KerNev = b[1];
+            return nev;
         }
     }
 }
